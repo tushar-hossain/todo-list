@@ -1,7 +1,20 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../Context/authContext";
 
 function Navbar() {
+  const { user, signOutUser } = use(AuthContext);
+
+  const handelClick = () => {
+    signOutUser()
+      .then(() => {
+        alert("Sign-out successful.");
+      })
+      .catch((error) => {
+        alert("please try agian");
+      });
+  };
+
   return (
     <div>
       <nav className="navbar">
@@ -16,11 +29,17 @@ function Navbar() {
               All Todo
             </Link>
           </li>
-          <li>
-            <Link style={{ textDecoration: "none" }} to={"/login"}>
-              Login
-            </Link>
-          </li>
+          {user ? (
+            <li>
+              <button onClick={handelClick}>Log Out</button>
+            </li>
+          ) : (
+            <li>
+              <Link style={{ textDecoration: "none" }} to={"/login"}>
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </div>
