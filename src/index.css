@@ -46,3 +46,18 @@
 .btn-submit {
   width: 100%;
 }
+.todo-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.todoCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: chocolate;
+  padding: 1.2rem;
+  border-radius: 0.6rem;
+  margin: 15px 0px;
+}
