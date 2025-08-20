@@ -1,16 +1,18 @@
 import { Button, Form, Input } from "antd";
 import { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/authContext";
 
 function Register() {
   const { setUser, createUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const onFinish = (values) => {
-    console.log("Success:", values);
     createUser(values.email, values.password)
       .then((result) => {
         setUser(result.user);
+        navigate(location.state || "/");
       })
       .catch((error) => console.log(error));
   };

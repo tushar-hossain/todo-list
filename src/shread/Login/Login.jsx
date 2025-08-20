@@ -1,18 +1,21 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Flex } from "antd";
 import { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/authContext";
+import { useLocation } from "react-router";
 
 function Login() {
   const { setUser, signInUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const onFinish = (values) => {
-    console.log(values);
     signInUser(values.email, values.password)
       .then((result) => {
         setUser(result.user);
         alert("Login successful");
+        navigate(location.state || "/");
       })
       .catch((error) => console.log("please try again"));
   };
