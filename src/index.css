@@ -1,10 +1,48 @@
-.todo{
-    text-align: center;
+.todo {
+  text-align: center;
 }
 
-.todo-form{
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.navbar {
+  background-color: gray;
+  font-size: 1.5rem;
+  text-align: left;
+}
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+  padding: 2rem;
+  text-align: center;
+}
+
+.navbar ul li a {
+  color: white;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-submit {
+  width: 100%;
 }
