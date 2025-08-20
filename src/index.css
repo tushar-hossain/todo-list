@@ -1,0 +1,10 @@
+.todo{
+    text-align: center;
+}
+
+.todo-form{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
