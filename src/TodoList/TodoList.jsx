@@ -1,60 +1,77 @@
-import { Button, DatePicker, Form, Input } from 'antd'
-import { useState } from 'react'
-
+import { Button, DatePicker, Form, Input } from "antd";
+import { useState } from "react";
+import app from "../firebase/firebase.init";
+import { getDatabase, ref, set, push } from "firebase/database";
 
 function TodoList() {
-    const [selectDate, setSelectDate] = useState(null)
+  const [selectDate, setSelectDate] = useState(null);
 
-    const onFinish = values =>{
-    values.date = selectDate
-    console.log("Success: ", values)
-}
+  const onFinish = (values) => {
+    values.date = selectDate;
 
-const onFinishFailed = errorInfo=>{
-    console.log("Failed: ", errorInfo)
-}
+    // data save firebase
+    const db = getDatabase(app);
+    const newdoc = push(ref(db, "todoDB/todos"));
 
-    const onChange = (date, dateString) => {
-        setSelectDate(dateString);
-      };
+    set(newdoc, values)
+      .then(() => {
+        alert("Data save successful");
+      })
+      .catch((error) => console.log(error.message));
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed: ", errorInfo);
+  };
+
+  const onChange = (date, dateString) => {
+    setSelectDate(dateString);
+  };
 
   return (
-    <div >
-      <Form name='basic'
-      labelCol={{span:26}}
-      wrapperCol={{span:26}}
-      style={{maxWidth:600}}
-      initialValues={{remember:true}}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      
+    <div>
+      <Form
+        name="basic"
+        labelCol={{ span: 26 }}
+        wrapperCol={{ span: 26 }}
+        style={{ maxWidth: 600 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
       >
-     <div>
-           {/* title */}
-        <Form.Item 
-        label="Todo title"
-        name="title"
-        rules={[{required:true, message:"Please Enter your todo title."}]}
-        >
+        <div>
+          {/* title */}
+          <Form.Item
+            label="Todo title"
+            name="title"
+            rules={[
+              { required: true, message: "Please Enter your todo title." },
+            ]}
+          >
             <Input />
-        </Form.Item>
-     </div>
+          </Form.Item>
+        </div>
 
         <div>
-            {/* date */}
-        <Form.Item label="Due date" name='date' rules={[{ required: true, message: 'Please date input!' }]}>
-        <DatePicker onChange={onChange} />
-        </Form.Item>
+          {/* date */}
+          <Form.Item
+            label="Due date"
+            name="date"
+            rules={[{ required: true, message: "Please date input!" }]}
+          >
+            <DatePicker onChange={onChange} />
+          </Form.Item>
         </div>
 
         {/* submit */}
         <Form.Item label={null}>
-            <Button type='primary' htmlType='submit'>Submit</Button>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
         </Form.Item>
-        
       </Form>
     </div>
-  )
+  );
 }
 
-export default TodoList
+export default TodoList;
