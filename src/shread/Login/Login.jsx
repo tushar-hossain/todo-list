@@ -21,7 +21,7 @@ function Login() {
   };
 
   return (
-    <div className="login-form">
+    <div className="login-form ">
       <Form
         name="login"
         initialValues={{ remember: true }}

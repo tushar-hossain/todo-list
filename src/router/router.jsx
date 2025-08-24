@@ -6,6 +6,7 @@ import Login from "../shread/Login/Login";
 import Register from "../shread/Register/Register";
 import PrivateRoute from "../Pages/routes/PrivateRoute";
 import Error from "../Pages/Error/Error";
+import UpdateTodo from "../Pages/UpdateTodo/UpdateTodo";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ export const router = createBrowserRouter([
       },
       { path: "login", Component: Login },
       { path: "register", Component: Register },
+
+      {
+        path: "update-todo/:id",
+        Component: UpdateTodo,
+      },
     ],
   },
 ]);

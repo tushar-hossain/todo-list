@@ -1,21 +1,11 @@
-.todo {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.todo-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.todo-form {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-}
 .navbar {
-  background-color: gray;
+  background-color: rgb(255, 218, 218);
   font-size: 1.5rem;
   text-align: left;
 }
@@ -30,13 +20,46 @@
 }
 
 .navbar ul li a {
-  color: white;
+  color: rgb(0, 0, 0);
+}
+
+button {
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  border: none;
+}
+button:hover {
+  background-color: transparent;
+}
+
+.todo {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  background-color: rgba(165, 181, 205, 0.214);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .login-form {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 }
 .account {
   display: flex;
@@ -46,13 +69,39 @@
 .btn-submit {
   width: 100%;
 }
-.todo-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+
+table {
+  border-collapse: collapse;
 }
 
-.todoCard {
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+.action {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-container {
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 1rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .todoCard {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -60,4 +109,50 @@
   padding: 1.2rem;
   border-radius: 0.6rem;
   margin: 15px 0px;
+} */
+
+/* Extra small devices (phones) */
+@media only screen and (max-width: 600px) {
+  .todo-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 5px;
+    padding: 0.5rem;
+  }
+
+  .todoCard {
+    background-color: rgb(230, 137, 70);
+    gap: 5x;
+    margin: 5px 0px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones) */
+@media only screen and (min-width: 600px) {
+  .todo-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .todoCard {
+    background-color: rgb(230, 137, 70);
+    gap: 5x;
+    margin: 5px 0px;
+  }
+}
+
+/* Medium devices (landscape tablets) */
+@media only screen and (min-width: 768px) {
+  .todo-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .todoCard {
+    background-color: rgb(230, 137, 70);
+    gap: 5x;
+    margin: 5px 0px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .todo-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
